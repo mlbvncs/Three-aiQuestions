@@ -1,0 +1,108 @@
+{% extends "questões.html" %}
+{% block content %}
+  <main>
+    <!-- Div de fundo abaixo do menu -->
+    <div class="container-fluid px-5 div2">
+      <!-- Div contendo o formulário de escolha de questões, a lista de questões que aparecerá e um formulário oculto que enviará os dados da questão escolhida -->
+      <div class="div3">
+        <section>
+          <!-- Formulário de escolha de questões -->
+          <form id="form1">
+            <div class="row">
+              <div class="col-sm-6 div4">
+                 <label class="font2" for="select1" id="label1">Selecione uma matéria:</label>
+              </div>
+              <div class="col-sm-6">
+                <select class="form-select select1 font2" id="select1" onChange="liberaAssunto()">
+                  <option selected data-default>Selecione</option>
+                  <option value="Matemática">Matemática</option>
+                  <option value="Física">Física</option>
+                </select>
+              </div>
+            </div>
+            <div class="mt-2">
+              <div class="row mt-2">
+                <div class="col-sm-6 div4">
+                  <label class="font2" for="select2" id="label2">Selecione um assunto:</label>
+                </div>
+                <div class="col-sm-6">
+                  <select class="form-select select1 font2" id="select2">
+                    <option selected data-default>Selecione</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 div2">
+              <button class="btn btn-outline-dark rounded-4 button1" id="button">Enviar</button>
+            </div>
+          </form>
+        </section>
+        <section>
+          <!-- Div vazia onde aparecerão as questões que podem ser escolhidas -->
+          <div id="div1">
+          </div>
+        </section>
+        <section>
+          <!-- Formulário vazio onde aparecerão inputs com valores contendo os dados da questão escolhida -->
+          <form action="/escolherquestão" method="POST" class="form1" id="form2">
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+  <style>
+    .div2 {
+      /*alinhando os conteúdos de dentro da div horizontalmente no centro*/
+      display: flex;
+      justify-content: center;
+    }
+    .div3 {
+      width: 564px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    .div4 {
+      /*alinhando a div de dentro verticalmente e horizontalmente no centro*/
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .div5 {
+      /*cortando o conteúdo para não passar de quatro linhas e ter três pontos*/
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+    }
+    .button1 {
+      width: 100px;
+    }
+    .button2 {
+      width: 130px;
+    }
+    .select1 {
+      cursor: pointer;
+      border-color: #B0B1B3;
+    }
+    .form1 {
+      display: none;
+    }
+    .font2 {
+      font-size: 17px;
+    }
+    select option[data-default] {
+      /*cor simulando que o campo está desabilitado depois que abre o select*/
+      color: #999999;
+    }
+    .form-select:focus {
+      /*tirando box-shadow (luz azul) dos inputs*/
+      border-color: #000000;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  </style>
+  <!-- Importando axios para usar no script -->
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+  <!-- Importando escolherquestão1.js para usar no script -->
+  <script src="static/functions/escolherquestão1.js"></script>
+{% endblock %}
